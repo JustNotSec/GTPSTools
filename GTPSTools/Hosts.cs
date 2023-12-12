@@ -25,8 +25,11 @@ namespace GTPSTools
             using (System.IO.StreamWriter file =
             new System.IO.StreamWriter(desktop + @"\hosts.txt", false))
             {
+                file.WriteLine("## HOST MAKER BY NOTSEC");
                 file.WriteLine(textBox1.Text + " growtopia1.com");
                 file.WriteLine(textBox1.Text + " growtopia2.com");
+                file.WriteLine(textBox1.Text + " www.growtopia1.com");
+                file.WriteLine(textBox1.Text + " www.growtopia2.com");
                 MessageBox.Show("Hosts Has been saved into Desktop", "GTPSControllerCS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
                 return;

@@ -28,8 +28,8 @@ namespace GTPSTools
     public partial class Form1 : Form
     {
         public string cuser = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-        public string xampp = @"C:\xampp\htdocs\growtopia";
-        public string xampp1 = @"C:\xampp";
+        // public string xampp = @"C:\xampp\htdocs\growtopia";
+        // public string xampp1 = @"C:\xampp";
         public Form1()
         {
             InitializeComponent();
@@ -116,36 +116,46 @@ namespace GTPSTools
             proc2.StartInfo.CreateNoWindow = true;
             proc2.Start();
             proc2.WaitForExit();
+            Process proc4 = new Process();
+            string top4 = "netsh.exe";
+            proc2.StartInfo.Arguments = "firewall add portopening TCP 443 443";
+            proc2.StartInfo.FileName = top4;
+            proc2.StartInfo.UseShellExecute = false;
+            proc2.StartInfo.RedirectStandardOutput = true;
+            proc2.StartInfo.CreateNoWindow = true;
+            proc2.Start();
+            proc2.WaitForExit();
+            Process proc3 = new Process();
             richTextBox1.AppendText("[+] Firewall Has Been Setted!\n");
-            if (!Directory.Exists(xampp1))
-            {
-                richTextBox1.AppendText("[E] Please Install XAMPP first: https://www.apachefriends.org/download.html \n");
-                MessageBox.Show("Please Install XAMPP First", "GTPSControllerCS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            richTextBox1.AppendText("[+] XAMPP Founded!\n");
-            System.IO.Directory.CreateDirectory(@"C:\xampp\htdocs\growtopia");
-            using (System.IO.StreamWriter file =
-            new System.IO.StreamWriter(xampp + @"\server_data.php", false))
-            {
-                richTextBox1.AppendText("[+] Setting server_data.php\n");
-                file.WriteLine("server|" + ip.Text);
-                file.WriteLine("port|" + port.Text);
-                file.WriteLine("type|1");
-                file.WriteLine("#maint|Mainetrance message (Not used for now) -- Growtopia Noobs");
-                file.WriteLine("");
-                file.WriteLine("beta_server|127.0.0.1");
-                file.WriteLine("beta_port|17091");
-                file.WriteLine("");
-                file.WriteLine("beta_type|1");
-                file.WriteLine("meta|localhost");
-                file.WriteLine("RTENDMARKERBS1001");
-                file.Close();
-                richTextBox1.AppendText("[+] server_data.php Has Been Setted!\n");
-                richTextBox1.AppendText("[+] All Has Been Setted!\n");
-                MessageBox.Show("Your Server Has Been Setted", "GTPSControllerCS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            // if (!Directory.Exists(xampp1))
+            // {
+            //     richTextBox1.AppendText("[E] Please Install XAMPP first: https://www.apachefriends.org/download.html \n");
+            //     MessageBox.Show("Please Install XAMPP First", "GTPSControllerCS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //     return;
+            // }
+            // richTextBox1.AppendText("[+] XAMPP Founded!\n");
+            // System.IO.Directory.CreateDirectory(@"C:\xampp\htdocs\growtopia");
+            // using (System.IO.StreamWriter file =
+            // new System.IO.StreamWriter(xampp + @"\server_data.php", false))
+            // {
+            //     richTextBox1.AppendText("[+] Setting server_data.php\n");
+            //     file.WriteLine("server|" + ip.Text);
+            //     file.WriteLine("port|" + port.Text);
+            //     file.WriteLine("type|1");
+            //     file.WriteLine("#maint|Mainetrance message (Not used for now) -- Growtopia Noobs");
+            //     file.WriteLine("");
+            //     file.WriteLine("beta_server|127.0.0.1");
+            //     file.WriteLine("beta_port|17091");
+            //     file.WriteLine("");
+            //     file.WriteLine("beta_type|1");
+            //     file.WriteLine("meta|localhost");
+            //     file.WriteLine("RTENDMARKERBS1001");
+            //     file.Close();
+            //     richTextBox1.AppendText("[+] server_data.php Has Been Setted!\n");
+            //     richTextBox1.AppendText("[+] All Has Been Setted!\n");
+            //     MessageBox.Show("Your Server Has Been Setted", "GTPSControllerCS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //     return;
+            // }
         }
 
         private void button6_Click(object sender, EventArgs e)
